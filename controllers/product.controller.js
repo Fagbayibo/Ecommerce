@@ -22,7 +22,13 @@ export const getAllProduct = async (req, res) => {
     });
   }
 };
-export const getSingleeProduct = async (req, res) => {};
+export const getSingleeProduct = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};
 export const createProduct = async (req, res) => {
   try {
     const {name, price, description, category} = req.body;
