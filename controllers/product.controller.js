@@ -23,11 +23,27 @@ export const getAllProduct = async (req, res) => {
   }
 };
 export const getSingleeProduct = async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
+  try {
+    const productID = req.params.id;
+    const getProductFromID = await Product.findOne(productID);
+    if (!getProductFromID) {
+      res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
     }
+
+    res.status(200).json({
+      success: true,
+      message: "Product fetched successfully",
+      data: getProductFromID,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: `Failed to fetched product: ${error.message}`,
+    });
+  }
 };
 export const createProduct = async (req, res) => {
   try {
